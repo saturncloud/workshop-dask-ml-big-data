@@ -25,6 +25,14 @@ To get the full learning value from this workshop, attendees should have prior e
     - Image: `saturncloud/saturn:2020.11.30` <br> (or latest available `saturncloud/saturn:*` image)
     - Workspace Settings
         - Size: `XLarge - 4 cores - 32GB RAM`
+    - Start script:
+    ```bash
+    # this is to utilize the latest release of xgboost
+    pip uninstall -y dask-xgboost xgboost || true
+    rm -f /opt/conda/envs/saturn/lib/libxgboost.so
+    rm -f /opt/conda/envs/saturn/lib/python3.7/site-packages/xgboost/lib/libxgboost.so
+    pip install --upgrade 'xgboost>=1.3.0'
+    ```
     - Click "Create"
 1. Attach a Dask Cluster to the project
     - Worker Size: `XLarge - 4 cores - 32GB RAM`
